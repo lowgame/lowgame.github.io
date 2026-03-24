@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A polished public landing page for Ahmet Kamer Çivi, compiled from publicly visible sources." />
+    <meta name="robots" content="index,follow" />
+    <title>Ahmet Kamer Çivi</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #08111f;
+        --bg2: #0d1b2a;
+        --card: rgba(14, 25, 40, 0.72);
+        --card-border: rgba(148, 163, 184, 0.18);
+        --text: #e5eefb;
+        --muted: #9fb1c9;
+        --accent: #6ee7ff;
+        --accent2: #8b5cf6;
+        --accent3: #22c55e;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      }
+
+      * { box-sizing: border-box; }
+      html, body { margin: 0; min-height: 100%; }
+      body {
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(110, 231, 255, 0.18), transparent 30%),
+          radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.22), transparent 28%),
+          radial-gradient(circle at 50% 100%, rgba(34, 197, 94, 0.14), transparent 35%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .wrap {
+        width: min(1100px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      header.hero {
+        position: relative;
+        overflow: hidden;
+        padding: 40px;
+        border: 1px solid var(--card-border);
+        border-radius: 28px;
+        background: linear-gradient(180deg, rgba(14, 25, 40, 0.86), rgba(10, 18, 31, 0.9));
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(12px);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        border: 1px solid rgba(110, 231, 255, 0.25);
+        border-radius: 999px;
+        color: var(--accent);
+        background: rgba(110, 231, 255, 0.07);
+        font-size: 0.92rem;
+        letter-spacing: 0.02em;
+      }
+
+      h1 {
+        margin: 18px 0 12px;
+        font-size: clamp(2.4rem, 6vw, 5rem);
+        line-height: 0.98;
+        letter-spacing: -0.05em;
+      }
+
+      .lede {
+        max-width: 58ch;
+        color: var(--muted);
+        font-size: 1.06rem;
+        margin: 0 0 24px;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0 0 28px;
+      }
+
+      .chip {
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--card-border);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        font-size: 0.95rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+        margin-top: 18px;
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      .card {
+        grid-column: span 6;
+        padding: 24px;
+        border-radius: 22px;
+        border: 1px solid var(--card-border);
+        background: var(--card);
+        box-shadow: var(--shadow);
+      }
+
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: 1.15rem;
+      }
+
+      .card p, .card li {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .list {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      a.link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 16px;
+        border-radius: 16px;
+        border: 1px solid rgba(159, 177, 201, 0.18);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        text-decoration: none;
+        transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      }
+
+      a.link:hover {
+        transform: translateY(-1px);
+        border-color: rgba(110, 231, 255, 0.42);
+        background: rgba(110, 231, 255, 0.08);
+      }
+
+      .label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+      }
+
+      .arrow {
+        color: var(--accent);
+      }
+
+      .featured {
+        grid-column: span 12;
+        padding: 28px;
+        border-radius: 24px;
+        border: 1px solid rgba(110, 231, 255, 0.16);
+        background: linear-gradient(180deg, rgba(15, 28, 45, 0.84), rgba(13, 23, 37, 0.92));
+      }
+
+      .featured .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .meta span {
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      footer {
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        padding: 8px 2px 0;
+      }
+
+      .accent {
+        background: linear-gradient(90deg, var(--accent), #fff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      @media (max-width: 860px) {
+        header.hero { padding: 26px; }
+        .card { grid-column: span 12; }
+        .links { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <div class="eyebrow">Public profile • curated from visible sources</div>
+        <h1>Ahmet Kamer<br /><span class="accent">Çivi</span></h1>
+        <p class="lede">
+          A polished one-page profile built from publicly visible online traces: LinkedIn, YouTube,
+          Medium, and other social platforms. The page is intentionally concise and source-driven.
+        </p>
+        <div class="chips" aria-label="Highlights">
+          <span class="chip">Physics background</span>
+          <span class="chip">Software developer</span>
+          <span class="chip">Public writing</span>
+          <span class="chip">Video presence</span>
+        </div>
+      </header>
+
+      <section class="grid" aria-label="Profile sections">
+        <article class="card">
+          <h2>What the public sources show</h2>
+          <ul class="list">
+            <li>YouTube bio mentions a Physics background.</li>
+            <li>LinkedIn search results point to a software developer role at Rakort Bilgi ve İletişim Teknolojileri.</li>
+            <li>Medium contains public articles under the same name.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Public platforms</h2>
+          <div class="links">
+            <a class="link" href="https://tr.linkedin.com/in/ahmet-kamer-%C3%A7ivi-321144218/en" target="_blank" rel="noreferrer">
+              <span class="label">LinkedIn</span><span class="arrow">↗</span>
+            </a>
+            <a class="link" href="https://www.youtube.com/@ahmetkamercivi/videos" target="_blank" rel="noreferrer">
+              <span class="label">YouTube</span><span class="arrow">↗</span>
+            </a>
+            <a class="link" href="https://medium.com/@ahmetkamerc" target="_blank" rel="noreferrer">
+              <span class="label">Medium</span><span class="arrow">↗</span>
+            </a>
+            <a class="link" href="https://www.instagram.com/ahmetkamercivi/" target="_blank" rel="noreferrer">
+              <span class="label">Instagram</span><span class="arrow">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="featured">
+          <div class="meta">
+            <span>Selected public writing</span>
+            <span>Medium</span>
+            <span>Feb 2026</span>
+          </div>
+          <h2 style="margin:0 0 10px; font-size:1.5rem;">Gümüş ve Altın neden düştü? Bir teori</h2>
+          <p style="margin:0 0 16px; color:var(--muted); max-width: 75ch;">
+            A recent public article attributed to Ahmet Kamer Çivi. This site keeps the presentation minimal
+            and links out to the source material instead of inventing a biography.
+          </p>
+          <a class="link" href="https://medium.com/@ahmetkamerc/g%C3%BCm%C3%BC%C5%9F-ve-alt%C4%B1n-neden-d%C3%BC%C5%9Ft%C3%BC-bir-teori-de2109c9af59" target="_blank" rel="noreferrer" style="max-width: 420px;">
+            <span class="label">Read the article</span><span class="arrow">↗</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <h2>Build note</h2>
+          <p>
+            This page is a simple static site published with GitHub Pages from a user site repository.
+            It uses only public references and avoids guessing at private details.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Source notes</h2>
+          <ul class="list">
+            <li>LinkedIn search result: public profile and role title.</li>
+            <li>YouTube channel page: bio and channel title.</li>
+            <li>Medium search result and article page.</li>
+          </ul>
+        </article>
+      </section>
+
+      <footer>
+        Compiled from publicly visible sources only. No private data intentionally included.
+      </footer>
+    </main>
+  </body>
+</html>
