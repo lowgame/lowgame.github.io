@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lowgame.github.io/sitemap.xml
