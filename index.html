@@ -1,295 +1,115 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="A polished public landing page for Ahmet Kamer Çivi, compiled from publicly visible sources." />
-    <meta name="robots" content="index,follow" />
-    <title>Ahmet Kamer Çivi</title>
-    <style>
-      :root {
-        color-scheme: dark;
-        --bg: #08111f;
-        --bg2: #0d1b2a;
-        --card: rgba(14, 25, 40, 0.72);
-        --card-border: rgba(148, 163, 184, 0.18);
-        --text: #e5eefb;
-        --muted: #9fb1c9;
-        --accent: #6ee7ff;
-        --accent2: #8b5cf6;
-        --accent3: #22c55e;
-        --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
-      }
-
-      * { box-sizing: border-box; }
-      html, body { margin: 0; min-height: 100%; }
-      body {
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background:
-          radial-gradient(circle at top left, rgba(110, 231, 255, 0.18), transparent 30%),
-          radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.22), transparent 28%),
-          radial-gradient(circle at 50% 100%, rgba(34, 197, 94, 0.14), transparent 35%),
-          linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
-        color: var(--text);
-        line-height: 1.5;
-      }
-
-      .wrap {
-        width: min(1100px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 32px 0 48px;
-      }
-
-      header.hero {
-        position: relative;
-        overflow: hidden;
-        padding: 40px;
-        border: 1px solid var(--card-border);
-        border-radius: 28px;
-        background: linear-gradient(180deg, rgba(14, 25, 40, 0.86), rgba(10, 18, 31, 0.9));
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(12px);
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 8px 14px;
-        border: 1px solid rgba(110, 231, 255, 0.25);
-        border-radius: 999px;
-        color: var(--accent);
-        background: rgba(110, 231, 255, 0.07);
-        font-size: 0.92rem;
-        letter-spacing: 0.02em;
-      }
-
-      h1 {
-        margin: 18px 0 12px;
-        font-size: clamp(2.4rem, 6vw, 5rem);
-        line-height: 0.98;
-        letter-spacing: -0.05em;
-      }
-
-      .lede {
-        max-width: 58ch;
-        color: var(--muted);
-        font-size: 1.06rem;
-        margin: 0 0 24px;
-      }
-
-      .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin: 0 0 28px;
-      }
-
-      .chip {
-        padding: 10px 14px;
-        border-radius: 999px;
-        border: 1px solid var(--card-border);
-        background: rgba(255, 255, 255, 0.04);
-        color: var(--text);
-        font-size: 0.95rem;
-      }
-
-      .grid {
-        display: grid;
-        gap: 18px;
-        margin-top: 18px;
-        grid-template-columns: repeat(12, 1fr);
-      }
-
-      .card {
-        grid-column: span 6;
-        padding: 24px;
-        border-radius: 22px;
-        border: 1px solid var(--card-border);
-        background: var(--card);
-        box-shadow: var(--shadow);
-      }
-
-      .card h2 {
-        margin: 0 0 12px;
-        font-size: 1.15rem;
-      }
-
-      .card p, .card li {
-        color: var(--muted);
-        margin: 0;
-      }
-
-      .list {
-        margin: 0;
-        padding-left: 18px;
-      }
-
-      .links {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 14px;
-      }
-
-      a.link {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 16px;
-        padding: 14px 16px;
-        border-radius: 16px;
-        border: 1px solid rgba(159, 177, 201, 0.18);
-        background: rgba(255, 255, 255, 0.03);
-        color: var(--text);
-        text-decoration: none;
-        transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
-      }
-
-      a.link:hover {
-        transform: translateY(-1px);
-        border-color: rgba(110, 231, 255, 0.42);
-        background: rgba(110, 231, 255, 0.08);
-      }
-
-      .label {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 600;
-      }
-
-      .arrow {
-        color: var(--accent);
-      }
-
-      .featured {
-        grid-column: span 12;
-        padding: 28px;
-        border-radius: 24px;
-        border: 1px solid rgba(110, 231, 255, 0.16);
-        background: linear-gradient(180deg, rgba(15, 28, 45, 0.84), rgba(13, 23, 37, 0.92));
-      }
-
-      .featured .meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 14px;
-      }
-
-      .meta span {
-        padding: 7px 10px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      footer {
-        margin-top: 22px;
-        color: var(--muted);
-        font-size: 0.92rem;
-        padding: 8px 2px 0;
-      }
-
-      .accent {
-        background: linear-gradient(90deg, var(--accent), #fff);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      @media (max-width: 860px) {
-        header.hero { padding: 26px; }
-        .card { grid-column: span 12; }
-        .links { grid-template-columns: 1fr; }
-      }
-    </style>
-  </head>
-  <body>
-    <main class="wrap">
-      <header class="hero">
-        <div class="eyebrow">Public profile • curated from visible sources</div>
-        <h1>Ahmet Kamer<br /><span class="accent">Çivi</span></h1>
-        <p class="lede">
-          A polished one-page profile built from publicly visible online traces: LinkedIn, YouTube,
-          Medium, and other social platforms. The page is intentionally concise and source-driven.
-        </p>
-        <div class="chips" aria-label="Highlights">
-          <span class="chip">Physics background</span>
-          <span class="chip">Software developer</span>
-          <span class="chip">Public writing</span>
-          <span class="chip">Video presence</span>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#000000">
+  <title>Ahmet Kamer Çivi — Physicist & Software Developer</title>
+  <meta name="description" content="Physicist and independent software developer. Explore doto, pomo, writo, clippo, iPhone apps, FLYSPEARE and open-source experiments in physics and code.">
+  <link rel="canonical" href="https://lowgame.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ahmet Kamer Çivi — Physics, code & small tools">
+  <meta property="og:description" content="Minimal macOS apps. Independent iPhone apps. Experiments in physics and code. Made by Ahmet Kamer Çivi.">
+  <meta property="og:url" content="https://lowgame.github.io/">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" href="/apps/feed.xml" title="App guides by Ahmet Kamer Çivi">
+  <link rel="stylesheet" href="/portfolio.css">
+  <script src="/portfolio.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ProfilePage","url":"https://lowgame.github.io/","name":"Ahmet Kamer Çivi — Physicist & Software Developer","mainEntity":{"@type":"Person","name":"Ahmet Kamer Çivi","alternateName":"lowgame","url":"https://lowgame.github.io/","jobTitle":["Physicist","Software Developer"],"knowsAbout":["Physics","Scientific computing","Swift","macOS applications","iOS applications"],"sameAs":["https://github.com/lowgame","https://medium.com/@ahmetkamerc","https://www.youtube.com/@ahmetkamercivi"]}}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+  <div class="page">
+    <header class="header">
+      <a class="wordmark" href="#" aria-label="Ahmet Kamer Çivi, home">akç<span aria-hidden="true">.</span></a>
+      <nav class="navigation" aria-label="Main navigation" data-nav>
+        <a href="#work" data-i18n="navWork">work</a>
+        <a href="#experiments" data-i18n="navExperiments">experiments</a>
+        <a href="#about" data-i18n="navAbout">about</a>
+      </nav>
+      <div class="preferences" hidden>
+        <button id="language-toggle" type="button" aria-label="Türkçe görüntüle">TR</button>
+        <button id="theme-toggle" type="button" aria-label="Switch to light theme"><span class="theme-glyph" aria-hidden="true"></span></button>
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="name">
+        <p class="eyebrow" data-i18n="heroEyebrow">Independent software & curious experiments</p>
+        <h1 id="name">Ahmet<br>Kamer Çivi<span class="name-dot">.</span></h1>
+        <div class="hero-bottom">
+          <p class="hero-role"><span data-i18n="physicist">Physicist.</span><br><span data-i18n="developer">Software developer.</span></p>
+          <div class="hero-intro"><p data-i18n="heroIntro">I build small tools for everyday life and explore the world through physics and code.</p><a class="text-link" href="#work"><span data-i18n="exploreWork">Explore my work</span><span aria-hidden="true">↓</span></a></div>
         </div>
-      </header>
-
-      <section class="grid" aria-label="Profile sections"><article class="featured" data-apps-marketing><h2>Independent iPhone apps</h2><p>Tile Tile for daily habits, Nostalgia Camera for retro photos, and CarTick for used-car viewings.</p><a class="link" href="/apps/"><span class="label">Explore my apps and practical guides</span><span class="arrow">↗</span></a></article>
-        <article class="card">
-          <h2>What the public sources show</h2>
-          <ul class="list">
-            <li>YouTube bio mentions a Physics background.</li>
-            <li>LinkedIn search results point to a software developer role at Rakort Bilgi ve İletişim Teknolojileri.</li>
-            <li>Medium contains public articles under the same name.</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h2>Public platforms</h2>
-          <div class="links">
-            <a class="link" href="https://tr.linkedin.com/in/ahmet-kamer-%C3%A7ivi-321144218/en" target="_blank" rel="noreferrer">
-              <span class="label">LinkedIn</span><span class="arrow">↗</span>
-            </a>
-            <a class="link" href="https://www.youtube.com/@ahmetkamercivi/videos" target="_blank" rel="noreferrer">
-              <span class="label">YouTube</span><span class="arrow">↗</span>
-            </a>
-            <a class="link" href="https://medium.com/@ahmetkamerc" target="_blank" rel="noreferrer">
-              <span class="label">Medium</span><span class="arrow">↗</span>
-            </a>
-            <a class="link" href="https://www.instagram.com/ahmetkamercivi/" target="_blank" rel="noreferrer">
-              <span class="label">Instagram</span><span class="arrow">↗</span>
-            </a>
-          </div>
-        </article>
-
-        <article class="featured">
-          <div class="meta">
-            <span>Selected public writing</span>
-            <span>Medium</span>
-            <span>Feb 2026</span>
-          </div>
-          <h2 style="margin:0 0 10px; font-size:1.5rem;">Gümüş ve Altın neden düştü? Bir teori</h2>
-          <p style="margin:0 0 16px; color:var(--muted); max-width: 75ch;">
-            A recent public article attributed to Ahmet Kamer Çivi. This site keeps the presentation minimal
-            and links out to the source material instead of inventing a biography.
-          </p>
-          <a class="link" href="https://medium.com/@ahmetkamerc/g%C3%BCm%C3%BC%C5%9F-ve-alt%C4%B1n-neden-d%C3%BC%C5%9Ft%C3%BC-bir-teori-de2109c9af59" target="_blank" rel="noreferrer" style="max-width: 420px;">
-            <span class="label">Read the article</span><span class="arrow">↗</span>
-          </a>
-        </article>
-
-        <article class="card">
-          <h2>Build note</h2>
-          <p>
-            This page is a simple static site published with GitHub Pages from a user site repository.
-            It uses only public references and avoids guessing at private details.
-          </p>
-        </article>
-
-        <article class="card">
-          <h2>Source notes</h2>
-          <ul class="list">
-            <li>LinkedIn search result: public profile and role title.</li>
-            <li>YouTube channel page: bio and channel title.</li>
-            <li>Medium search result and article page.</li>
-          </ul>
-        </article>
       </section>
-
-      <footer>
-        Compiled from publicly visible sources only. No private data intentionally included.
-      </footer>
+      <section class="section tools-section" id="work" aria-labelledby="tools-title">
+        <div class="section-top"><p class="index">01 <span aria-hidden="true">/</span> macOS</p><p class="section-note" data-i18n="toolsMeta">Native Swift. Open source. macOS 14+.</p></div>
+        <div class="section-intro"><h2 id="tools-title" data-i18n="toolsTitle">As minimal as possible.</h2><p data-i18n="toolsIntro">Four small apps, one shared approach: clear type, quiet interfaces, and just the things you need.</p></div>
+        <div class="tools-grid">
+          <article class="tool">
+            <a class="tool-image" href="https://github.com/lowgame/doto" aria-label="Explore doto on GitHub"><img src="/assets/portfolio/doto.png" width="780" height="980" loading="lazy" decoding="async" alt="doto showing tasks and a repeating habit in its dark menu bar panel"></a>
+            <div class="tool-heading"><h3>doto</h3><span class="tool-mark" aria-hidden="true">●</span></div>
+            <p data-i18n="dotoDescription">Tasks, daily habits and a scratchpad. A small place in your menu bar for what's next.</p>
+            <div class="tool-links"><a href="https://github.com/lowgame/doto/releases/latest" aria-label="Download doto for macOS"><span data-i18n="download">Download</span><span aria-hidden="true">↗</span></a><a href="https://github.com/lowgame/doto" aria-label="View doto source code" data-i18n="source">Source</a></div>
+          </article>
+          <article class="tool">
+            <a class="tool-image" href="https://github.com/lowgame/pomo" aria-label="Explore pomo on GitHub"><img src="/assets/portfolio/pomo.png" width="836" height="796" loading="lazy" decoding="async" alt="pomo focus timer showing 21 minutes and 42 seconds with completed session dots"></a>
+            <div class="tool-heading"><h3>pomo</h3><span class="tool-mark" aria-hidden="true">◉</span></div>
+            <p data-i18n="pomoDescription">Focus, rest, repeat. A quiet menu bar timer with a clear view of your day's sessions.</p>
+            <div class="tool-links"><a href="https://github.com/lowgame/pomo/releases/latest" aria-label="Download pomo for macOS"><span data-i18n="download">Download</span><span aria-hidden="true">↗</span></a><a href="https://github.com/lowgame/pomo" aria-label="View pomo source code" data-i18n="source">Source</a></div>
+          </article>
+          <article class="tool">
+            <a class="tool-image tool-image-wide" href="https://github.com/lowgame/writo" aria-label="Explore writo on GitHub"><img src="/assets/portfolio/writo.png" width="960" height="600" loading="lazy" decoding="async" alt="writo with a note list and a distraction-free Markdown writing canvas"></a>
+            <div class="tool-heading"><h3>writo</h3><span class="tool-mark" aria-hidden="true">■</span></div>
+            <p data-i18n="writoDescription">A little room to write. Plain Markdown, quick search and a focused typewriter mode.</p>
+            <div class="tool-links"><a href="https://github.com/lowgame/writo/releases/latest" aria-label="Download writo for macOS"><span data-i18n="download">Download</span><span aria-hidden="true">↗</span></a><a href="https://github.com/lowgame/writo" aria-label="View writo source code" data-i18n="source">Source</a></div>
+          </article>
+          <article class="tool">
+            <a class="tool-image" href="https://github.com/lowgame/clippo" aria-label="Explore clippo on GitHub"><img src="/assets/portfolio/clippo.png" width="776" height="776" loading="lazy" decoding="async" alt="clippo displaying searchable clipboard history in a monochrome menu bar panel"></a>
+            <div class="tool-heading"><h3>clippo</h3><span class="tool-mark" aria-hidden="true">○</span></div>
+            <p data-i18n="clippoDescription">Keep what you copied within reach. Search your clipboard history and pick it up again.</p>
+            <div class="tool-links"><a href="https://github.com/lowgame/clippo/releases/latest" aria-label="Download clippo for macOS"><span data-i18n="download">Download</span><span aria-hidden="true">↗</span></a><a href="https://github.com/lowgame/clippo" aria-label="View clippo source code" data-i18n="source">Source</a></div>
+          </article>
+        </div>
+      </section>
+      <section class="section fly-section" id="experiments" aria-labelledby="fly-title">
+        <div class="section-top"><p class="index">02 <span aria-hidden="true">/</span> <span data-i18n="experimentLabel">An experiment</span></p><a class="quiet-link" href="https://flyspeare.lol">flyspeare.lol <span aria-hidden="true">↗</span></a></div>
+        <div class="fly-layout">
+          <div class="fly-copy"><h2 id="fly-title">flyspeare<span>.</span></h2><p class="fly-question" data-i18n="flyQuestion">A fly. A keyboard.<br>And Shakespeare?</p><p class="fly-description" data-i18n="flyDescription">A computational take on the infinite monkey theorem. Simulated fruit flies move, land on a keyboard and leave keystrokes behind. An ongoing experiment in neural circuits, physics and chance.</p><a class="text-link" href="https://flyspeare.lol"><span data-i18n="flyCta">Watch the experiment</span><span aria-hidden="true">↗</span></a></div>
+          <figure class="fly-study" aria-label="Typographic illustration of a fly above a keyboard"><div class="fly-symbol" aria-hidden="true"><span class="wing wing-left"></span><span class="wing wing-right"></span><span class="fly-body"></span><span class="fly-head"></span><span class="leg leg-left"></span><span class="leg leg-right"></span></div><div class="key-study" aria-hidden="true"><span>T</span><span>O</span><span>B</span><span>E</span><span>?</span></div><figcaption data-i18n="flyCaption">A thought experiment, given somewhere to land.</figcaption></figure>
+        </div>
+      </section>
+      <section class="section" aria-labelledby="lab-title">
+        <div class="section-top"><p class="index">03 <span aria-hidden="true">/</span> <span data-i18n="labLabel">Physics & code</span></p><a class="quiet-link" href="https://github.com/lowgame?tab=repositories"><span data-i18n="allRepositories">All public repositories</span> <span aria-hidden="true">↗</span></a></div>
+        <div class="section-intro"><h2 id="lab-title" data-i18n="labTitle">Ideas you can inspect.</h2><p data-i18n="labIntro">Small models, visual experiments and open code. A few ways I follow a question.</p></div>
+        <div class="project-list">
+          <a class="project-row" href="https://github.com/lowgame/doublePendulum"><h3 data-i18n="pendulumTitle">Double pendulum</h3><p data-i18n="pendulumDescription">Classical mechanics and chaotic motion, explored in Python and Pygame.</p><span class="project-type" data-i18n="simulation">Simulation</span><span aria-hidden="true">↗</span></a>
+          <a class="project-row" href="https://github.com/lowgame/soft_body_physics"><h3 data-i18n="softBodyTitle">Soft-body physics</h3><p data-i18n="softBodyDescription">Particles and springs, brought together in a browser-based physics experiment.</p><span class="project-type">JavaScript</span><span aria-hidden="true">↗</span></a>
+          <a class="project-row" href="https://github.com/lowgame/phys456"><h3 data-i18n="opticsTitle">Quantum optics</h3><p data-i18n="opticsDescription">A numerical study of photon-pair spectra and crystal length in SPDC.</p><span class="project-type">Python</span><span aria-hidden="true">↗</span></a>
+          <a class="project-row" href="https://github.com/lowgame/phys448_project"><h3 data-i18n="statisticsTitle">Statistical explorations</h3><p data-i18n="statisticsDescription">Price-series correlations and numerical analysis in a physics course project.</p><span class="project-type">Python</span><span aria-hidden="true">↗</span></a>
+          <a class="project-row" href="https://conways-game-of-life-orpin.vercel.app"><h3>Game of Life</h3><p data-i18n="lifeDescription">Simple local rules, patterns that keep unfolding. A cellular automaton in the browser.</p><span class="project-type" data-i18n="openInBrowser">Open in browser</span><span aria-hidden="true">↗</span></a>
+          <a class="project-row" href="https://lowgame.github.io/Ascii-Arter/"><h3>ASCII Arter</h3><p data-i18n="asciiDescription">Build animated ASCII scenes, then bring them into your own website.</p><span class="project-type" data-i18n="openInBrowser">Open in browser</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+      <section class="section" aria-labelledby="iphone-title" data-apps-marketing>
+        <div class="section-top"><p class="index">04 <span aria-hidden="true">/</span> iPhone</p><a class="quiet-link" href="/apps/"><span data-i18n="appGuides">Apps & practical guides</span> <span aria-hidden="true">↗</span></a></div>
+        <div class="section-intro"><h2 id="iphone-title" data-i18n="iphoneTitle">Made for everyday life.</h2><p data-i18n="iphoneIntro">A few more things I've made, available on the App Store.</p></div>
+        <div class="iphone-grid">
+          <a class="iphone-app" href="https://lowgame.github.io/tiletile/"><span class="app-number">01</span><h3>Tile Tile</h3><p data-i18n="tileDescription">Small habits, daily check-ins and a visual history of your progress.</p><span class="text-link"><span data-i18n="exploreApp">Explore the app</span><span aria-hidden="true">↗</span></span></a>
+          <a class="iphone-app" href="https://lowgame.github.io/nostalgia-camera-legal/"><span class="app-number">02</span><h3>Nostalgia Camera</h3><p data-i18n="nostalgiaDescription">Your everyday moments, through the grain and color of another camera era.</p><span class="text-link"><span data-i18n="exploreApp">Explore the app</span><span aria-hidden="true">↗</span></span></a>
+          <a class="iphone-app" href="https://lowgame.github.io/cartick-legal/"><span class="app-number">03</span><h3>CarTick</h3><p data-i18n="cartickDescription">Notes, photos and guided checks for used-car viewings. A companion to an independent inspection.</p><span class="text-link"><span data-i18n="exploreApp">Explore the app</span><span aria-hidden="true">↗</span></span></a>
+        </div>
+      </section>
+      <section class="section about-section" id="about" aria-labelledby="about-title">
+        <p class="index">05 <span aria-hidden="true">/</span> <span data-i18n="aboutLabel">A little about me</span></p>
+        <div class="about-layout"><h2 id="about-title" data-i18n="aboutTitle">Physics is part of<br>how I think.</h2><div class="about-copy"><p data-i18n="aboutFirst">I'm Ahmet, a physicist and software developer. My work moves between computational experiments and tools you can use every day.</p><p data-i18n="aboutSecond">In physics, I explore how a model behaves. In software, I care about how an interface feels. Both start with paying attention to the details.</p><p data-i18n="aboutThird">I like making things small enough to understand, useful enough to keep, and open enough to learn from.</p><a class="text-link" href="https://medium.com/@ahmetkamerc"><span data-i18n="readWriting">Read my writing</span><span aria-hidden="true">↗</span></a></div></div>
+      </section>
     </main>
-  </body>
+    <footer class="footer"><a class="wordmark" href="#" aria-label="Back to top">akç.</a><nav aria-label="Find me elsewhere"><a href="https://github.com/lowgame">GitHub <span aria-hidden="true">↗</span></a><a href="https://tr.linkedin.com/in/ahmet-kamer-%C3%A7ivi-321144218/en">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://medium.com/@ahmetkamerc">Medium <span aria-hidden="true">↗</span></a><a href="https://www.youtube.com/@ahmetkamercivi/videos">YouTube <span aria-hidden="true">↗</span></a></nav><p>© 2026 Ahmet Kamer Çivi</p></footer>
+  </div>
+</body>
 </html>
