@@ -6,6 +6,7 @@
   const nodes = [...document.querySelectorAll('[data-i18n]')];
   const english = Object.fromEntries(nodes.map(node => [node.dataset.i18n, node.innerHTML]));
   const turkish = {
+    photoLabel:"Nostalgia Camera · Yeni deney",photoTitle:"Aynı fotoğraf. Üç zaman.",photoDescription:"Üç sahne, üç kamera görünümü. Saklamak istediğin fotoğrafları seç, dönemleri aç ve orijinallerle karşılaştır.",photoCta:"Bir dakikalık deneyi aç ↗",
     skip:'İçeriğe geç',navWork:'projeler',navExperiments:'deneyler',navAbout:'hakkımda',
     heroEyebrow:'Bağımsız yazılımlar ve merakla başlayan deneyler',physicist:'Fizikçi.',developer:'Yazılım geliştirici.',
     heroIntro:'Gündelik hayat için küçük araçlar yapıyor, dünyayı fizik ve kodla keşfediyorum.',exploreWork:'Projeleri keşfet',
