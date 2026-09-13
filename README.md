@@ -22,4 +22,4 @@ GitHub Pages serves the root of `main`. Check the public page after pushing; a c
 
 ## Same photo, three eras
 
-`three-eras/` is a standalone English/Turkish photo experiment with nine outputs from the Nostalgia Camera production engine. Photos are credited CC0 inputs. The app catalog was compared with the released 1.0.1 build 8 archive. `provenance.json` records inputs, crop, profiles, seeds and checksums. The page does not currently send analytics events to a collector; its in-page event interface is not aggregate measurement.
+`three-eras/` is a standalone English/Turkish photo experiment with nine outputs from the Nostalgia Camera production engine. The current people/friendship photographs are credited Pexels inputs. The selected eras are 1895, 1972 and 2004, in a shared square crop. The app catalog was compared with the released 1.0.1 build 8 archive. `provenance.json` records inputs, crop, profiles, seeds and checksums. The page does not currently send analytics events to a collector; its in-page event interface is not aggregate measurement.
