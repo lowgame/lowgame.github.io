@@ -40,7 +40,7 @@
     "sources": "Photo credits & originals",
     "sourceNote": "Licensed photographs from Pexels, cropped and processed for this experiment. The people pictured are not app testimonials; no endorsement is implied.",
     "provenance": "Image sources and processing record ↗",
-    "privacy": "Your choices stay in this page and disappear when you reload it. No account, photo upload or advertising tracker. GitHub Pages serves this site and may keep standard request logs.",
+    "privacy": "Your choices stay in this page and disappear when you reload it. No account, photo upload or advertising tracker. GitHub Pages serves this site and may keep standard request logs. App Store links include a campaign label for Apple’s aggregate reports. Your photo choices are not sent.",
     "aboutApp": "About Nostalgia Camera ↗",
     "feedback": "Feedback & support ↗",
     "credit": "Source photo",
@@ -104,7 +104,7 @@
     "sources": "Fotoğraf kaynakları ve orijinaller",
     "sourceNote": "Pexels’ten lisanslı fotoğraflar, bu deney için kırpıldı ve işlendi. Görsellerdeki kişiler uygulama hakkında görüş bildirmiyor; bir işbirliği veya onay ima edilmiyor.",
     "provenance": "Görsel kaynakları ve işleme kaydı ↗",
-    "privacy": "Seçimlerin bu sayfada kalır; sayfa yenilenince silinir. Hesap, fotoğraf yükleme veya reklam takibi yok. Siteyi sunan GitHub Pages standart erişim kayıtları tutabilir.",
+    "privacy": "Seçimlerin bu sayfada kalır; sayfa yenilenince silinir. Hesap, fotoğraf yükleme veya reklam takibi yok. Siteyi sunan GitHub Pages standart erişim kayıtları tutabilir. App Store bağlantıları, Apple’ın toplu raporları için bir kampanya etiketi içerir. Fotoğraf seçimlerin gönderilmez.",
     "aboutApp": "Nostalgia Camera hakkında ↗",
     "feedback": "Geri bildirim ve destek ↗",
     "credit": "Kaynak fotoğraf",
@@ -135,6 +135,14 @@
   const scenes=[{"id":"laughter","author":"Gary Barnes","source":"https://www.pexels.com/photo/laughing-friends-spending-time-together-in-nature-6231770/"},{"id":"picnic","author":"Polina Tankilevitch","source":"https://www.pexels.com/photo/friends-doing-picnic-near-the-lake-7711676/"},{"id":"evening","author":"cottonbro studio","source":"https://www.pexels.com/photo/a-group-of-friends-sitting-on-a-picnic-blanket-while-having-conversation-10071281/"}];
   const years=[1895,1972,2004];
   const requestedLang=new URLSearchParams(location.search).get('lang');
+  // Only a known distribution label changes the Apple campaign. No choices,
+  // identifiers, or arbitrary query values are sent to the store.
+  const campaign=new URLSearchParams(location.search).get('source')==='reddit'
+    ?'threeeras_reddit':'threeeras_owned_web';
+  const storeUrl=new URL('https://apps.apple.com/app/apple-store/id6794068633');
+  storeUrl.search=new URLSearchParams({pt:'129175476',ct:campaign,mt:'8',ppid:'80d5fb3d-fce0-4fb1-be8a-de8b3243ed93'}).toString();
+  document.querySelectorAll('a.store').forEach(a=>{a.href=storeUrl.href;});
+
   let lang=['en','tr'].includes(requestedLang)?requestedLang:(navigator.language?.startsWith('tr')?'tr':'en');
   let round=0,choices=[],original=false,complete=false,started=false;
   // Events are an integration boundary only. No collector, network request,
